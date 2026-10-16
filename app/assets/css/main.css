@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 213 29% 6.1%; /* #0b0f14 */
+    --foreground: 210 40% 98%; /* #f8fafc */
+
+    --muted: 215 25% 15%; /* #1a232f */
+    --muted-foreground: 215 16% 65%; /* #94a3b8 */
+
+    --popover: 210 33% 4.7%; /* #080c10 */
+    --popover-foreground: 210 40% 98%;
+
+    --card: 214 30% 8.5%; /* #0f161f */
+    --card-foreground: 210 40% 98%;
+
+    --border: 213 23% 19%; /* #26313d */
+    --input: 213 23% 19%;
+
+    --primary: 160 84% 39%; /* #10b981 */
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 213 26% 12%; /* #121a24 */
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 156 73% 52%; /* #34d399 */
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 160 84% 39%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-color: #0b0f14;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #e2e8f0;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Subtle Technical Straight-Line Grid Pattern (Strictly straight lines, no circles/arcs) */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(16, 185, 129, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.035) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 192px 192px, 192px 192px, 48px 48px, 48px 48px;
+  background-position: 0 0;
+}
+
+/* Editorial Brand Typography */
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom dark scrollbar for sleek desktop viewing */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2533;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Centered Login Ambient Background: subtle diffuse soft white/gray ambient glow on dark #080c10 */
+.bg-login-ambient {
+  background-color: #080c10;
+  background-image: radial-gradient(ellipse 70% 55% at 50% 48%, rgba(255, 255, 255, 0.03) 0%, rgba(16, 185, 129, 0.012) 32%, transparent 70%);
+}
+
+
