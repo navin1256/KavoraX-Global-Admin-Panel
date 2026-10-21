@@ -191,7 +191,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import {
   Mail,
   Lock,
@@ -201,6 +202,7 @@ import {
   Info,
   X
 } from 'lucide-vue-next'
+import { useAuth } from '~/composables/useAuth'
 
 definePageMeta({
   layout: false
@@ -216,8 +218,11 @@ useHead({
   ]
 })
 
+const route = useRoute()
+const { login, isAuthenticated } = useAuth()
+
 const email = ref('admin@kavorax.com')
-const password = ref('kavorax2026')
+const password = ref('')
 const showPassword = ref(false)
 const rememberMe = ref(true)
 const isLoading = ref(false)
@@ -228,6 +233,14 @@ const statusTitle = ref('')
 const statusMessage = ref('')
 const statusType = ref<'info' | 'error' | 'success'>('info')
 const showDashboardLink = ref(false)
+
+onMounted(() => {
+  if (route.query.sessionExpired) {
+    statusType.value = 'error'
+    statusTitle.value = 'Session Expired'
+    statusMessage.value = 'Your administrator session has expired or is invalid. Please sign in again.'
+  }
+})
 
 const validateForm = () => {
   let isValid = true
@@ -246,8 +259,8 @@ const validateForm = () => {
   if (!password.value) {
     passwordError.value = 'Password is required.'
     isValid = false
-  } else if (password.value.length < 8) {
-    passwordError.value = 'Password must be at least 8 characters in length.'
+  } else if (password.value.length < 6) {
+    passwordError.value = 'Password must be at least 6 characters in length.'
     isValid = false
   }
 
@@ -255,26 +268,33 @@ const validateForm = () => {
 }
 
 const handleSubmit = async () => {
-  if (!validateForm()) {
-    return
-  }
+  if (isLoading.value) return
+  if (!validateForm()) return
 
   isLoading.value = true
   statusMessage.value = ''
   statusTitle.value = ''
   showDashboardLink.value = false
 
-  // Verify credentials and redirect to Admin Dashboard
-  setTimeout(() => {
-    isLoading.value = false
+  try {
+    await login({
+      email: email.value.trim(),
+      password: password.value
+    })
+
     statusType.value = 'success'
     statusTitle.value = 'Sign In Successful'
     statusMessage.value = 'Credentials verified. Redirecting to Admin Console...'
-    
-    setTimeout(() => {
-      navigateTo('/admin')
-    }, 700)
-  }, 800)
+
+    const targetUrl = (route.query.redirect as string) || '/admin'
+    await navigateTo(targetUrl)
+  } catch (err: any) {
+    statusType.value = 'error'
+    statusTitle.value = 'Authentication Failed'
+    statusMessage.value = err.message || 'Invalid credentials or server error. Please try again.'
+  } finally {
+    isLoading.value = false
+  }
 }
 
 const handleForgotPassword = () => {

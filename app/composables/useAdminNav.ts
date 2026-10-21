@@ -46,10 +46,16 @@ export const useAdminNav = () => {
       icon: 'CreditCard'
     },
     {
-      name: 'Leads',
+      name: 'Demo Leads',
       to: '/admin/leads',
       icon: 'Users',
-      badge: '3 New'
+      badge: 'Live'
+    },
+    {
+      name: 'Contact Inquiries',
+      to: '/admin/enquiries',
+      icon: 'Mail',
+      badge: 'Live'
     },
     {
       name: 'Website Content',

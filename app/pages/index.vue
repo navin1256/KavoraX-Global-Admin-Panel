@@ -5,5 +5,12 @@
 </template>
 
 <script setup lang="ts">
-await navigateTo('/admin')
+import { useAuth } from '~/composables/useAuth'
+
+const { isAuthenticated } = useAuth()
+if (isAuthenticated.value) {
+  await navigateTo('/admin')
+} else {
+  await navigateTo('/login')
+}
 </script>

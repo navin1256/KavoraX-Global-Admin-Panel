@@ -43,11 +43,23 @@ import {
   Package,
   Workflow,
   Users,
-  FileText,
+  Mail,
   ArrowUpRight
 } from 'lucide-vue-next'
 
 const quickActions = [
+  {
+    title: 'Demo Leads',
+    description: 'Enterprise walkthrough & session requests',
+    to: '/admin/leads',
+    icon: Users
+  },
+  {
+    title: 'Contact Inquiries',
+    description: 'Incoming RFP & partnership messages',
+    to: '/admin/enquiries',
+    icon: Mail
+  },
   {
     title: 'Manage Products',
     description: 'Catalog, SKU specs & status',
@@ -59,18 +71,6 @@ const quickActions = [
     description: 'Architectures & deployments',
     to: '/admin/solutions',
     icon: Workflow
-  },
-  {
-    title: 'Manage Leads',
-    description: 'Enterprise demo & sales opportunities',
-    to: '/admin/leads',
-    icon: Users
-  },
-  {
-    title: 'Website Content',
-    description: 'Landing pages, copy & policies',
-    to: '/admin/content',
-    icon: FileText
   }
 ]
 </script>
