@@ -1,9 +1,9 @@
 <template>
   <aside
-    class="w-[260px] flex-shrink-0 flex flex-col min-h-screen bg-[#080c10] border-r border-border select-none"
+    class="w-[260px] flex-shrink-0 flex flex-col h-full bg-[#080c10] border-r border-border select-none"
   >
     <!-- Brand Header -->
-    <div class="h-16 flex items-center justify-between px-5 border-b border-border">
+    <div class="h-16 shrink-0 flex items-center justify-between px-5 border-b border-border">
       <NuxtLink
         to="/admin"
         class="flex items-center gap-2.5 group"
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Navigation List -->
-    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto" aria-label="Admin Navigation">
+    <nav class="flex-1 min-h-0 px-3 py-4 space-y-1 overflow-y-auto" aria-label="Admin Navigation">
       <div class="px-2 pb-2 text-[10px] font-mono tracking-wider uppercase text-slate-500 font-medium">
         Platform Core
       </div>
@@ -81,7 +81,7 @@
     </nav>
 
     <!-- Bottom System Context Footer -->
-    <div class="p-3.5 border-t border-border bg-[#0b0f14]/50">
+    <div class="p-3.5 border-t border-border bg-[#0b0f14]/50 shrink-0 mt-auto">
       <div class="flex items-center justify-between px-2 py-1.5 rounded bg-slate-900/60 border border-slate-800/80">
         <div class="flex items-center gap-2">
           <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />

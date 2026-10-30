@@ -78,6 +78,13 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+/* Dedicated main content scroller styling */
+.admin-main-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #1a2533 #080c10;
+  scrollbar-gutter: stable;
+}
+
 /* Custom dark scrollbar for sleek desktop viewing */
 ::-webkit-scrollbar {
   width: 6px;
@@ -113,5 +120,3 @@
   background-color: #080c10;
   background-image: radial-gradient(ellipse 70% 55% at 50% 48%, rgba(255, 255, 255, 0.03) 0%, rgba(16, 185, 129, 0.012) 32%, transparent 70%);
 }
-
-

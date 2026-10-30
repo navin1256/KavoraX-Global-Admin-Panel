@@ -1,12 +1,12 @@
 <template>
   <header
-    class="h-16 border-b border-border bg-[#080c10]/95 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6"
+    class="h-16 border-b border-border bg-[#080c10]/95 backdrop-blur-md shrink-0 z-10 flex items-center justify-between px-4 sm:px-6"
   >
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 min-w-0 flex-1 mr-3">
       <!-- Mobile Drawer Hamburger Toggle Button -->
       <button
         type="button"
-        class="lg:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-1 focus:ring-emerald-500"
+        class="lg:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-1 focus:ring-emerald-500 shrink-0"
         aria-label="Open navigation sidebar"
         @click="openMobileNav"
       >
@@ -14,11 +14,13 @@
       </button>
 
       <!-- Breadcrumbs navigation -->
-      <AdminBreadcrumbs />
+      <div class="min-w-0 overflow-hidden">
+        <AdminBreadcrumbs />
+      </div>
     </div>
 
     <!-- Header Right Actions & Profile Placeholder -->
-    <div class="flex items-center gap-3 sm:gap-4">
+    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
       <!-- Environment Indicator -->
       <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded border border-border bg-slate-900/50 text-[11px] text-slate-300 font-mono">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" />
